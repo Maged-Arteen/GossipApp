@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import React from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 export default function page() {
   const user = { 
@@ -21,7 +22,9 @@ export default function page() {
       console.log(api.data.token)
       localStorage.setItem('tkn', api.data.token)
       
-      if(localStorage.getItem('tkn') !== null ){user_to.push('/profile')}
+      if(localStorage.getItem('tkn') !== null ){
+        toast.success("Welcome Back ")
+        user_to.push('/profile')}
   }
 const Data_Login =   useFormik({
   initialValues:user , 
